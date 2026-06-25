@@ -129,9 +129,9 @@
   }
 
   .hero-meta a {
-    color: #FFD700;
+    color: rgba(255, 255, 255, 0.95);
     text-decoration: none;
-    border-bottom: 1px solid rgba(255, 215, 0, 0.5);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.5);
     font-weight: 600;
     transition: all 0.2s;
     position: relative;
@@ -781,6 +781,7 @@
   @media (max-width: 900px) {
     .hero-inner { grid-template-columns: 1fr; gap: 40px; }
     .hero { padding: 80px 30px 40px; }
+    .hero::before { background: rgba(7, 17, 26, 0.65); }
     .tab-container { padding: 0 30px; }
     .tab-content { padding: 40px 30px; }
     .grid-2, .grid-3 { grid-template-columns: 1fr; }
