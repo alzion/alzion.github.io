@@ -1,0 +1,1375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aisulu Tustykbayeva | Senior TPM, Infrastructure</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fira+Mono:wght@400;500;700&family=Fira+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg-card: rgba(255, 255, 255, 0.7);
+    --bg-hover: rgba(255, 255, 255, 0.9);
+    --accent: #162f42;
+    --text-main: #0a1520;
+    --text-muted: #3d5668;
+    --border: rgba(255, 255, 255, 0.6);
+  }
+
+  *, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    font-family: 'Fira Sans', sans-serif;
+    background-color: #ffffff;
+    background-image: linear-gradient(
+      180deg,
+      #07111a 0px, 
+      #162f42 300px, 
+      #7a9ba8 500px, 
+      #c4dcdf 700px, 
+      #ffffff 900px
+    );
+    background-repeat: no-repeat;
+    background-position: top center;
+    color: var(--text-main);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1, h2, h3, h4, h5 {
+    font-family: 'Fira Sans', sans-serif;
+    font-weight: 600;
+    line-height: 1.2;
+  }
+
+  .mono {
+    font-family: 'Fira Mono', monospace;
+  }
+
+  /* HERO SECTION */
+  .hero {
+    position: relative;
+    padding: 120px 80px 80px;
+    color: #ffffff;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, rgba(7, 17, 26, 0.6) 0%, rgba(7, 17, 26, 0) 100%);
+    pointer-events: none;
+  }
+
+  .hero-inner {
+    position: relative;
+    z-index: 1;
+    max-width: 1280px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 60fr 40fr;
+    gap: 80px;
+    align-items: center;
+  }
+
+  .hero-name {
+    font-family: 'Fira Mono', monospace;
+    font-size: clamp(14px, 1.5vw, 18px);
+    font-weight: 700;
+    color: #aad0d4;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 24px;
+  }
+  
+  .hero-name span {
+    color: rgba(255, 255, 255, 0.6);
+    font-weight: 400;
+  }
+
+  .hero-headline {
+    font-weight: 700;
+    font-size: clamp(42px, 5vw, 72px);
+    letter-spacing: -0.02em;
+    margin-bottom: 32px;
+    color: #ffffff;
+  }
+
+  .hero-tagline {
+    font-size: clamp(16px, 1.2vw, 20px);
+    color: rgba(255, 255, 255, 0.85);
+    max-width: 580px;
+  }
+
+  .avatar {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 2px solid rgba(255, 255, 255, 0.4);
+    margin-bottom: 20px;
+    box-shadow: 0 12px 32px rgba(0,0,0,0.2);
+  }
+
+  .avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 20%;
+  }
+
+  .hero-meta {
+    font-size: 15px;
+    color: rgba(255, 255, 255, 0.85);
+  }
+
+  .hero-meta a {
+    color: rgba(255, 255, 255, 0.95);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+    font-weight: 600;
+    transition: all 0.2s;
+    position: relative;
+    z-index: 10;
+  }
+
+  .hero-meta a:hover {
+    color: #fff;
+    border-bottom-color: #fff;
+  }
+
+  /* HERO STATS STRIP */
+  .hero-stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(16px);
+    border-top: 1px solid rgba(255, 255, 255, 0.5);
+    border-bottom: 1px solid rgba(22, 47, 66, 0.08);
+    padding: 28px 80px;
+  }
+
+  .hero-stat {
+    text-align: center;
+    padding: 0 16px;
+    border-right: 1px solid rgba(22, 47, 66, 0.1);
+  }
+
+  .hero-stat:last-child { border-right: none; }
+
+  .hero-stat-num {
+    font-family: 'Fira Mono', monospace;
+    font-size: 36px;
+    font-weight: 700;
+    color: var(--accent);
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+
+  .hero-stat-label {
+    font-size: 13px;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    font-family: 'Fira Mono', monospace;
+  }
+
+  /* NAVIGATION TABS */
+  .tab-wrapper {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(255, 255, 255, 0.01);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.6);
+  }
+
+  .tab-container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 80px;
+    display: flex;
+    gap: 8px;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+
+  .tab-container::-webkit-scrollbar {
+    display: none;
+  }
+
+  .tab-btn {
+    background: rgba(255, 255, 255, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    border-bottom: none;
+    color: var(--text-muted);
+    font-family: 'Fira Mono', monospace;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 16px 24px;
+    cursor: pointer;
+    border-radius: 8px 8px 0 0;
+    transition: all 0.2s;
+    white-space: nowrap;
+    position: relative;
+    top: 1px;
+    box-shadow: 0 -4px 12px rgba(0,0,0,0.02);
+  }
+
+  .tab-btn:hover {
+    background: rgba(255, 255, 255, 0.9);
+    color: var(--text-main);
+  }
+
+  .tab-btn.active {
+    color: var(--text-main);
+    background: rgba(255, 255, 255, 0.95);
+    border: 1px solid rgba(255, 255, 255, 0.9);
+    border-bottom: 1px solid transparent; 
+    font-weight: 700;
+  }
+
+  /* CONTENT AREAS */
+  .tab-content {
+    display: none;
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 60px 80px 40px;
+    animation: fadeIn 0.4s ease-out;
+    min-height: 40vh;
+  }
+
+  .tab-content.active {
+    display: block;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .section-title {
+    font-size: 36px;
+    margin-bottom: 40px;
+    font-weight: 600;
+  }
+
+  /* Glass subtitle wrapper for high readability */
+  .section-subtitle {
+    font-size: 18px;
+    color: var(--text-main);
+    font-weight: 500;
+    background: var(--bg-card);
+    backdrop-filter: blur(16px);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 24px;
+    margin-top: -20px;
+    margin-bottom: 50px;
+    max-width: 800px;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.04);
+  }
+
+  /* GRID LAYOUTS */
+  .grid-2 {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 32px;
+  }
+
+  .grid-3 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+  }
+
+  /* CARDS */
+  .card {
+    background: var(--bg-card);
+    backdrop-filter: blur(16px);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 32px;
+    transition: transform 0.2s, background 0.2s;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.04);
+  }
+
+  .card:hover {
+    background: var(--bg-hover);
+    transform: translateY(-4px);
+  }
+
+  .card h3 {
+    font-size: 20px;
+    margin-bottom: 16px;
+    font-weight: 600;
+  }
+
+  .card p {
+    color: var(--text-muted);
+    font-size: 15px;
+  }
+
+  .card strong {
+    color: var(--text-main);
+    font-weight: 600;
+  }
+
+  /* LINKS */
+  a.impact-link, a.footer-link {
+    color: var(--accent);
+    text-decoration: underline;
+    font-weight: 500;
+    position: relative;
+    z-index: 10;
+    cursor: pointer;
+  }
+
+  a.impact-link:hover, a.footer-link:hover {
+    color: #000000;
+  }
+
+  .project-list li {
+    color: var(--text-muted);
+    font-size: 15px;
+    margin-bottom: 8px;
+    line-height: 1.5;
+  }
+
+  /* STATS */
+  .stat-block {
+    text-align: center;
+    padding: 40px;
+    background: var(--bg-card);
+    backdrop-filter: blur(16px);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.04);
+  }
+
+  .stat-num {
+    font-family: 'Fira Mono', monospace;
+    font-size: 48px;
+    font-weight: 700;
+    color: var(--accent);
+    margin-bottom: 8px;
+  }
+
+  /* ACCORDIONS */
+  .accordion {
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    margin-bottom: 16px;
+    overflow: hidden;
+    background: var(--bg-card);
+    backdrop-filter: blur(16px);
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.04);
+  }
+
+  .accordion-header {
+    width: 100%;
+    text-align: left;
+    background: transparent;
+    border: none;
+    padding: 24px 32px;
+    color: var(--text-main);
+    font-family: 'Fira Sans', sans-serif;
+    font-size: 24px;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background 0.2s;
+  }
+
+  .accordion-header:hover {
+    background: rgba(255, 255, 255, 0.4);
+  }
+
+  .accordion-icon {
+    font-family: 'Fira Mono', monospace;
+    color: var(--accent);
+    font-size: 24px;
+    transition: transform 0.3s;
+  }
+
+  .accordion.open .accordion-icon {
+    transform: rotate(45deg);
+  }
+
+  .accordion-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s cubic-bezier(0, 1, 0, 1);
+  }
+
+  .accordion.open .accordion-content {
+    max-height: 2000px;
+    transition: max-height 0.4s ease-in-out;
+  }
+
+  .accordion-inner {
+    padding: 32px;
+    border-top: 1px solid var(--border);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+  }
+
+  .study-meta {
+    font-family: 'Fira Mono', monospace;
+    font-size: 13px;
+    color: var(--accent);
+    margin-bottom: 24px;
+  }
+
+  .step {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 24px;
+  }
+
+  .step-num {
+    font-family: 'Fira Mono', monospace;
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--accent);
+    line-height: 1;
+  }
+
+
+  .tag {
+    display: inline-block;
+    padding: 4px 8px;
+    background: rgba(22, 47, 66, 0.1);
+    color: var(--accent);
+    font-family: 'Fira Mono', monospace;
+    font-size: 12px;
+    border-radius: 4px;
+    margin-top: 8px;
+    margin-right: 4px;
+    font-weight: 500;
+  }
+
+  /* FOOTER */
+  .site-footer {
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(16px);
+    border-top: 1px solid var(--border);
+    padding: 60px 80px;
+    margin-top: 40px;
+  }
+  
+  .footer-inner {
+    max-width: 1280px;
+    margin: 0 auto;
+  }
+  
+  .footer-bottom {
+    text-align: center;
+    padding-top: 60px;
+    border-top: 1px solid rgba(0,0,0,0.05);
+    margin-top: 40px;
+  }
+
+  .site-footer p {
+    color: var(--text-muted);
+    font-size: 15px;
+    margin-bottom: 12px;
+  }
+
+  /* PROGRAMS TABLE */
+  .programs-table-wrap {
+    background: var(--bg-card);
+    backdrop-filter: blur(16px);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.04);
+  }
+
+  .programs-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 15px;
+    min-width: 900px;
+  }
+
+  .programs-table th {
+    background: var(--accent);
+    color: rgba(255,255,255,0.95);
+    padding: 16px 20px;
+    text-align: left;
+    font-family: 'Fira Mono', monospace;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    font-weight: 600;
+  }
+
+  .programs-table td {
+    padding: 20px;
+    border-bottom: 1px solid rgba(22,47,66,0.07);
+    vertical-align: top;
+    color: var(--text-muted);
+    line-height: 1.55;
+    font-size: 14px;
+  }
+
+  .programs-table tbody tr:last-child td { border-bottom: none; }
+
+  .programs-table tbody tr:hover td {
+    background: rgba(255,255,255,0.55);
+  }
+
+  .programs-table td:first-child {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--text-main);
+    min-width: 200px;
+  }
+
+  /* RECORD TAB */
+  .record-big-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+    margin-bottom: 48px;
+  }
+
+  .record-stat {
+    background: var(--bg-card);
+    backdrop-filter: blur(16px);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 36px;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.04);
+  }
+
+  .record-num {
+    font-family: 'Fira Mono', monospace;
+    font-size: 52px;
+    font-weight: 700;
+    color: var(--accent);
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+
+  .record-label {
+    font-size: 15px;
+    color: var(--text-main);
+    margin-bottom: 10px;
+  }
+
+  .record-stat p {
+    font-size: 14px;
+    color: var(--text-muted);
+    line-height: 1.5;
+  }
+
+  /* DONUT CHARTS */
+  .donut-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+  }
+
+  .donut-item { text-align: center; }
+
+  .donut-wrap {
+    position: relative;
+    width: 140px;
+    height: 140px;
+    margin: 0 auto 20px;
+  }
+
+  .donut-svg {
+    width: 140px;
+    height: 140px;
+    transform: rotate(-90deg);
+  }
+
+  .donut-bg {
+    fill: none;
+    stroke: rgba(22,47,66,0.1);
+    stroke-width: 3;
+  }
+
+  .donut-seg {
+    fill: none;
+    stroke: var(--accent);
+    stroke-width: 3;
+    stroke-linecap: round;
+  }
+
+  .donut-center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: 'Fira Mono', monospace;
+    font-size: 26px;
+    font-weight: 700;
+    color: var(--accent);
+  }
+
+  /* ABOUT TAB */
+  .about-block {
+    margin-bottom: 32px;
+    padding-bottom: 32px;
+    border-bottom: 1px solid rgba(22,47,66,0.08);
+  }
+
+  .about-block:last-of-type { border-bottom: none; }
+
+  .about-heading {
+    font-size: 15px;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    margin-bottom: 12px;
+  }
+
+  .about-block p {
+    color: var(--text-muted);
+    font-size: 15px;
+    line-height: 1.65;
+  }
+
+  .credential-list { margin-top: 4px; }
+
+  .credential-item {
+    padding: 14px 0;
+    border-bottom: 1px solid rgba(22,47,66,0.08);
+  }
+
+  .credential-item:last-child { border-bottom: none; }
+
+  .credential-item .mono {
+    font-size: 15px;
+    color: var(--text-main);
+    font-weight: 500;
+  }
+
+  /* SKILLS TAB */
+  .skill-card {
+    background: var(--bg-card);
+    backdrop-filter: blur(16px);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 28px 32px;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.04);
+  }
+
+  .skill-cat {
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    color: var(--accent);
+    margin-bottom: 18px;
+  }
+
+  .skill-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .skill-chip {
+    display: inline-block;
+    padding: 6px 14px;
+    font-size: 13px;
+    color: var(--text-main);
+    background: rgba(22, 47, 66, 0.06);
+    border: 1px solid rgba(22, 47, 66, 0.14);
+    border-radius: 20px;
+    line-height: 1.4;
+    white-space: nowrap;
+  }
+
+  /* PROGRAM SKILL CHIPS */
+  .skills-label {
+    font-family: 'Fira Mono', monospace;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--accent);
+    margin-bottom: 5px;
+  }
+
+  .prog-skill {
+    display: inline-block;
+    font-size: 11px;
+    padding: 3px 9px;
+    border-radius: 12px;
+    margin: 2px 2px 2px 0;
+    line-height: 1.4;
+    white-space: nowrap;
+  }
+
+  .prog-skill-h {
+    background: rgba(22,47,66,0.07);
+    border: 1px solid rgba(22,47,66,0.15);
+    color: var(--text-main);
+  }
+
+  .prog-skill-s {
+    background: transparent;
+    border: 1px solid rgba(22,47,66,0.25);
+    color: var(--text-muted);
+    font-style: italic;
+  }
+
+  /* SECTION DIVIDER */
+  .section-divider {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin: 48px 0 32px;
+  }
+
+  .section-divider::before,
+  .section-divider::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: rgba(22, 47, 66, 0.12);
+  }
+
+  .section-divider-label {
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.09em;
+    color: var(--text-muted);
+    white-space: nowrap;
+  }
+
+  /* THIRD-PARTY VALIDATION */
+  .validation-section { margin-top: 48px; }
+
+  .validation-quote {
+    margin: 0;
+    padding: 24px;
+    background: var(--bg-card);
+    backdrop-filter: blur(16px);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--accent);
+    border-radius: 0 8px 8px 0;
+    font-size: 15px;
+    color: var(--text-muted);
+    line-height: 1.6;
+  }
+
+  .validation-quote strong {
+    color: var(--text-main);
+    display: block;
+    margin-bottom: 6px;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-family: 'Fira Mono', monospace;
+  }
+
+  @media (max-width: 900px) {
+    .hero-inner { grid-template-columns: 1fr; gap: 40px; }
+    .hero { padding: 80px 30px 40px; }
+    .tab-container { padding: 0 30px; }
+    .tab-content { padding: 40px 30px; }
+    .grid-2, .grid-3 { grid-template-columns: 1fr; }
+    .accordion-inner { grid-template-columns: 1fr; }
+    .site-footer { padding: 60px 30px; }
+    .record-big-grid { grid-template-columns: 1fr; }
+    .donut-grid { grid-template-columns: 1fr; gap: 48px; }
+    .programs-table { font-size: 13px; }
+    .record-num { font-size: 40px; }
+  }
+  .hero-proof {
+    font-family: 'Fira Mono', monospace;
+    font-size: clamp(13px, 1.1vw, 15px);
+    color: #aad0d4;
+    margin-top: 24px;
+    letter-spacing: 0.04em;
+  }
+
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="left">
+      <p class="hero-name">Aisulu Tustykbayeva <span>| Sr Technical Program Manager, Cloud/AI Infra</span></p>
+      <h1 class="hero-headline">I run infrastructure programs that ship.</h1>
+      <p class="hero-tagline">My job is done when the system runs without me. I design to that standard from day one.</p>
+      <p class="hero-proof">$10M+ revenue enabled &nbsp;&middot;&nbsp; $4M+ largest program budget</p>
+    </div>
+    <div class="right">
+      <div class="avatar">
+        <img src="Aisulu Headshot.jpg" alt="Aisulu Tustykbayeva">
+      </div>
+      <div class="hero-meta">
+        <p>M.Sc. Computer Science &middot; PMP &middot; NVIDIA NCA-AIIO (in progress)</p>
+        <p>San Francisco, CA &middot; Green Card holder</p>
+        <p style="margin-top: 12px;">
+          <a href="mailto:aisulu.tustykbayeva@gmail.com">Email</a> &middot;
+          <a href="https://linkedin.com/in/aisulu-t" target="_blank">LinkedIn</a> &middot;
+          <a href="https://drive.google.com/drive/folders/1Btj2QfFbDbI20stL4iuCZfSHR9kA3BPJ?usp=sharing" target="_blank">Resume</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TABS -->
+<div class="tab-wrapper">
+  <div class="tab-container">
+    <button class="tab-btn active" onclick="openTab('value')">Value</button>
+    <button class="tab-btn" onclick="openTab('about')">About</button>
+    <button class="tab-btn" onclick="openTab('programs')">Programs</button>
+    <button class="tab-btn" onclick="openTab('skills')">Skills</button>
+    <button class="tab-btn" onclick="openTab('projects')">Projects</button>
+  </div>
+</div>
+
+<!-- TAB 1: VALUE -->
+<div id="value" class="tab-content active">
+  <h2 class="section-title">The problems I'm hired to solve</h2>
+  <div class="grid-3">
+    <div class="card">
+      <h3>Nobody owns delivery</h3>
+      <p>Deadlines slip. Dependencies go dark. Escalations replace planning. I map the gaps, <strong>design the operating model, and deploy it across XFN teams</strong> without formal authority. The system runs. I'm not in the critical path.</p>
+    </div>
+    <div class="card">
+      <h3>Production system replacement with no downtime</h3>
+      <p>Live revenue base. No margin for data loss. Engineers who disagree on sequencing. I design the <strong>dual-write window, the validation gate, and the rollback trigger</strong> before engineering starts. Not after the first incident.</p>
+    </div>
+    <div class="card">
+      <h3>Technical depth is required</h3>
+      <p>I earn engineers' trust by showing up technically prepared: reading the specs, surfacing the design gap before it becomes a P0, running the test that finds what the architecture missed. That's the entry condition. Everything else follows.</p>
+    </div>
+    <div class="card">
+      <h3>Hard external deadline attached to a dollar amount</h3>
+      <p>Certification, contract, or competitor launch. I run the <strong>evidence framework, surface amber flags before they become findings</strong>, and close programs on schedule when missing the date has a public cost.</p>
+    </div>
+    <div class="card">
+      <h3>Technical surface, organizational root</h3>
+      <p>Two teams, no one accountable. Neither moves first. I find the root cause of the resistance, redesign the sequence so each team has a reason to go, and drive the decision to close.</p>
+    </div>
+  </div>
+</div>
+
+<!-- TAB 2: PROGRAMS -->
+<div id="programs" class="tab-content">
+  <h2 class="section-title">Program portfolio</h2>
+
+  <div class="grid-2" style="margin-bottom: 40px;">
+    <div class="about-block" style="margin-bottom: 0;">
+      <h3 class="mono about-heading">The company</h3>
+      <p>PS Cloud Services: a multi-tenant IaaS platform processing 1.2M requests/second at peak across 7 data centers in Kazakhstan and Uzbekistan. Enterprise customers include fintech and oil production operators with contractual SLA and compliance requirements. Engineering organized across 8 service teams. None reported to me. I ran programs across all 8.</p>
+    </div>
+    <div class="about-block" style="margin-bottom: 0;">
+      <h3 class="mono about-heading">What I built there</h3>
+      <p>Built the company's first TPM practice from zero. Defined the operating model, established program governance, and grew the function over 4.5 years. Two direct reports promoted within 18 months.</p>
+    </div>
+  </div>
+
+  <div class="programs-table-wrap">
+    <table class="programs-table">
+      <thead>
+        <tr>
+          <th>Program</th>
+          <th>Outcome</th>
+          <th>The hard constraint</th>
+          <th>Teams spanned</th>
+          <th>Skills applied</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>CRM migration via GraphQL federation</strong></td>
+          <td>Zero downtime, $20M revenue base protected. 12 months to 4. Query p99: 3–5s → &lt;500ms.</td>
+          <td>Live $20M revenue base. No margin for data loss. 5 platforms in disagreement on sequencing.</td>
+          <td>Platform, DBaaS, K8s, LBaaS, SRE</td>
+          <td>
+            <div class="skills-label">Hard</div>
+            <span class="prog-skill prog-skill-h">GraphQL federation</span>
+            <span class="prog-skill prog-skill-h">Dual-write migration</span>
+            <span class="prog-skill prog-skill-h">Data validation pipelines</span>
+            <span class="prog-skill prog-skill-h">PostgreSQL / WHMCS</span>
+            <div class="skills-label" style="margin-top:8px">Soft</div>
+            <span class="prog-skill prog-skill-s">Decision documentation</span>
+            <span class="prog-skill prog-skill-s">Root cause reframing</span>
+            <span class="prog-skill prog-skill-s">Schedule pressure resistance</span>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>Enterprise churn prediction & early warning</strong></td>
+          <td>Churn 15%→9%. Support alert action rate 87%. 11% enterprise net retention lift. $11.7M revenue base protected.</td>
+          <td>No team, no budget. Data across 5 disconnected systems with no shared identifier.</td>
+          <td>CRO, Sales, Support, Infrastructure, Data Analytics</td>
+          <td>
+            <div class="skills-label">Hard</div>
+            <span class="prog-skill prog-skill-h">ML model design (logistic regression, gradient boosting)</span>
+            <span class="prog-skill prog-skill-h">SHAP feature attribution</span>
+            <span class="prog-skill prog-skill-h">Data unification (5 systems)</span>
+            <span class="prog-skill prog-skill-h">Ceph storage telemetry</span>
+            <div class="skills-label" style="margin-top:8px">Soft</div>
+            <span class="prog-skill prog-skill-s">Program charter under constraint</span>
+            <span class="prog-skill prog-skill-s">Kill criteria definition</span>
+            <span class="prog-skill prog-skill-s">Support team co-design</span>
+            <span class="prog-skill prog-skill-s">Handoff discipline</span>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>PCI DSS 4.0.1 certification, 7 DCs</strong></td>
+          <td>Certified 3 weeks early. $3.2M ARR converted. Deploy frequency 40+/week maintained.</td>
+          <td>Competitor on the same deadline. 8 service teams, no direct authority.</td>
+          <td>LBaaS, DBaaS, K8s, Object Storage, Networking, Security, SRE, DevOps</td>
+          <td>
+            <div class="skills-label">Hard</div>
+            <span class="prog-skill prog-skill-h">PCI DSS 4.0.1</span>
+            <span class="prog-skill prog-skill-h">RAG evidence dashboards</span>
+            <span class="prog-skill prog-skill-h">Sidecar-emitted compliance signals</span>
+            <span class="prog-skill prog-skill-h">API schema governance</span>
+            <div class="skills-label" style="margin-top:8px">Soft</div>
+            <span class="prog-skill prog-skill-s">QSA negotiation</span>
+            <span class="prog-skill prog-skill-s">Concession strategy</span>
+            <span class="prog-skill prog-skill-s">Amber rule governance</span>
+            <span class="prog-skill prog-skill-s">Influence without authority</span>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>DC expansion + 100 Gbps optical ring</strong></td>
+          <td>4 to 7 sites, 99.95% SLA maintained. $8M in deals unblocked. Sub-50ms failover.</td>
+          <td>6 vendors, 2 countries. Design gap surfaced mid-program in synthetic load test.</td>
+          <td>Networking, Platform, SRE, Security + 6 external vendors</td>
+          <td>
+            <div class="skills-label">Hard</div>
+            <span class="prog-skill prog-skill-h">DWDM optical networking</span>
+            <span class="prog-skill prog-skill-h">G.8032 ERPS</span>
+            <span class="prog-skill prog-skill-h">BFD + BGP</span>
+            <span class="prog-skill prog-skill-h">Multi-DC architecture</span>
+            <span class="prog-skill prog-skill-h">etcd quorum topology</span>
+            <div class="skills-label" style="margin-top:8px">Soft</div>
+            <span class="prog-skill prog-skill-s">Vendor negotiation</span>
+            <span class="prog-skill prog-skill-s">Physical site verification</span>
+            <span class="prog-skill prog-skill-s">Financial modeling for technical decisions</span>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>K8s provisioning automation (Terraform + GitOps)</strong></td>
+          <td>96% provisioning time reduction (4–6 hrs → 10–15 min). Error rate down 10×.</td>
+          <td>8 skeptics. One never converted. System works regardless.</td>
+          <td>DevOps, K8s Platform, DBaaS, Networking, Security</td>
+          <td>
+            <div class="skills-label">Hard</div>
+            <span class="prog-skill prog-skill-h">Kubernetes / Helm</span>
+            <span class="prog-skill prog-skill-h">Terraform state management</span>
+            <span class="prog-skill prog-skill-h">GitOps CI gates</span>
+            <span class="prog-skill prog-skill-h">TOCTOU risk mitigation</span>
+            <div class="skills-label" style="margin-top:8px">Soft</div>
+            <span class="prog-skill prog-skill-s">Change management</span>
+            <span class="prog-skill prog-skill-s">Adoption without mandate</span>
+            <span class="prog-skill prog-skill-s">Rollout sequencing by trust</span>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>Kubernetes cost visibility (Kubecost)</strong></td>
+          <td>$400K deals protected. License $15K→$11K. 620 eng-hours preserved. Adopted by 2 additional product teams.</td>
+          <td>VP decision already announced. Critical-path engineers named for the build.</td>
+          <td>Engineering (VP), Infrastructure, Sales, K8s Platform, DBaaS, LBaaS</td>
+          <td>
+            <div class="skills-label">Hard</div>
+            <span class="prog-skill prog-skill-h">Kubecost</span>
+            <span class="prog-skill prog-skill-h">OPA admission controller</span>
+            <span class="prog-skill prog-skill-h">Namespace label taxonomy</span>
+            <span class="prog-skill prog-skill-h">Build vs. buy analysis</span>
+            <div class="skills-label" style="margin-top:8px">Soft</div>
+            <span class="prog-skill prog-skill-s">Executive decision reversal</span>
+            <span class="prog-skill prog-skill-s">Cost modeling</span>
+            <span class="prog-skill prog-skill-s">Vendor contract negotiation</span>
+            <span class="prog-skill prog-skill-s">Decision documentation</span>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>Firewall SDN migration (FortiGate-VM + NSX)</strong></td>
+          <td>Latency 3× AWS to competitive. Zero customer impact across 7 DCs.</td>
+          <td>PCI-scoped migration. One incident ends the program permanently.</td>
+          <td>Networking, Security, K8s Platform, SRE, DBaaS</td>
+          <td>
+            <div class="skills-label">Hard</div>
+            <span class="prog-skill prog-skill-h">FortiGate-VM / NSX</span>
+            <span class="prog-skill prog-skill-h">SDN migration</span>
+            <span class="prog-skill prog-skill-h">Network segmentation</span>
+            <span class="prog-skill prog-skill-h">LBaaS traffic routing</span>
+            <div class="skills-label" style="margin-top:8px">Soft</div>
+            <span class="prog-skill prog-skill-s">Zero-incident governance</span>
+            <span class="prog-skill prog-skill-s">Rollback planning</span>
+            <span class="prog-skill prog-skill-s">Risk register management</span>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>Infrastructure capacity planning & demand modeling</strong></td>
+          <td>Forecast variance ±35%→±21% (40% improvement). Bottlenecks identified ahead of each DC expansion phase.</td>
+          <td>No demand telemetry. Forecasts based on sales pipeline estimates only.</td>
+          <td>Infrastructure, Finance, Sales, Engineering</td>
+          <td>
+            <div class="skills-label">Hard</div>
+            <span class="prog-skill prog-skill-h">What-if simulation design</span>
+            <span class="prog-skill prog-skill-h">Cost modeling</span>
+            <span class="prog-skill prog-skill-h">Traffic forecasting</span>
+            <span class="prog-skill prog-skill-h">Demand telemetry</span>
+            <div class="skills-label" style="margin-top:8px">Soft</div>
+            <span class="prog-skill prog-skill-s">Cross-functional data gathering</span>
+            <span class="prog-skill prog-skill-s">Forecast credibility building</span>
+            <span class="prog-skill prog-skill-s">Executive communication</span>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>Cross-team observability & deadlock resolution</strong></td>
+          <td>6-month deadlock resolved in 8 weeks. $2M+ pricing decision enabled. $500K decommissioning savings. 40% capacity forecast improvement.</td>
+          <td>No owner. Previous mandate produced silent resistance. Neither team would move first.</td>
+          <td>Product, Infrastructure (LBaaS, K8s, Compute, Object Storage), Data</td>
+          <td>
+            <div class="skills-label">Hard</div>
+            <span class="prog-skill prog-skill-h">Prometheus / Grafana</span>
+            <span class="prog-skill prog-skill-h">Metrics taxonomy design</span>
+            <span class="prog-skill prog-skill-h">PoC design & execution</span>
+            <span class="prog-skill prog-skill-h">Schema freeze governance</span>
+            <div class="skills-label" style="margin-top:8px">Soft</div>
+            <span class="prog-skill prog-skill-s">Resistance root-cause mapping</span>
+            <span class="prog-skill prog-skill-s">Rollout sequencing by trust</span>
+            <span class="prog-skill prog-skill-s">Ambiguity ownership</span>
+            <span class="prog-skill prog-skill-s">Program durability under leadership change</span>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>Delivery operating system</strong></td>
+          <td>On-time delivery: 40% to 85%, company-wide.</td>
+          <td>No mandate. Adoption had to be earned, not assigned.</td>
+          <td>All 8 service teams + Product, Legal, Finance</td>
+          <td>
+            <div class="skills-label">Hard</div>
+            <span class="prog-skill prog-skill-h">OKR / KPI framework design</span>
+            <span class="prog-skill prog-skill-h">RAID logging</span>
+            <span class="prog-skill prog-skill-h">Dependency tracking</span>
+            <span class="prog-skill prog-skill-h">Operating model design</span>
+            <div class="skills-label" style="margin-top:8px">Soft</div>
+            <span class="prog-skill prog-skill-s">Influence without authority</span>
+            <span class="prog-skill prog-skill-s">Earned adoption</span>
+            <span class="prog-skill prog-skill-s">Company-wide change management</span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="donut-grid" style="margin-top: 48px;">
+    <div class="donut-item">
+      <div class="donut-wrap">
+        <svg viewBox="0 0 36 36" class="donut-svg">
+          <circle cx="18" cy="18" r="15.9155" class="donut-bg"/>
+          <circle cx="18" cy="18" r="15.9155" class="donut-seg" style="stroke-dasharray: 96 4"/>
+        </svg>
+        <div class="donut-center">96%</div>
+      </div>
+      <h4 class="mono" style="margin-bottom: 6px;">K8s Provisioning Reduction</h4>
+      <p style="color: var(--text-muted); font-size: 14px;">4–6 hours to 10–15 min. Error rate down 10×.</p>
+    </div>
+    <div class="donut-item">
+      <div class="donut-wrap">
+        <svg viewBox="0 0 36 36" class="donut-svg">
+          <circle cx="18" cy="18" r="15.9155" class="donut-bg"/>
+          <circle cx="18" cy="18" r="15.9155" class="donut-seg" style="stroke-dasharray: 75 25"/>
+        </svg>
+        <div class="donut-center">75%</div>
+      </div>
+      <h4 class="mono" style="margin-bottom: 6px;">New-Service Integration Faster</h4>
+      <p style="color: var(--text-muted); font-size: 14px;">4–6 weeks to 1 week via GraphQL federation across 5 legacy systems.</p>
+    </div>
+    <div class="donut-item">
+      <div class="donut-wrap">
+        <svg viewBox="0 0 36 36" class="donut-svg">
+          <circle cx="18" cy="18" r="15.9155" class="donut-bg"/>
+          <circle cx="18" cy="18" r="15.9155" class="donut-seg" style="stroke-dasharray: 85 15"/>
+        </svg>
+        <div class="donut-center">85%</div>
+      </div>
+      <h4 class="mono" style="margin-bottom: 6px;">On-Time Delivery</h4>
+      <p style="color: var(--text-muted); font-size: 14px;">Company-wide. Up from 40%.</p>
+    </div>
+  </div>
+</div>
+
+<!-- TAB 6: SKILLS -->
+<div id="skills" class="tab-content">
+  <h2 class="section-title">Skills</h2>
+
+  <div class="grid-2">
+    <div class="skill-card">
+      <h3 class="mono skill-cat">AI &amp; GPU Infrastructure</h3>
+      <div class="skill-chips">
+        <span class="skill-chip">GPU fleet lifecycle management</span>
+        <span class="skill-chip">Compute stack delivery</span>
+        <span class="skill-chip">Node-level fault detection</span>
+        <span class="skill-chip">Slurm / job scheduling</span>
+        <span class="skill-chip">GPU cost attribution</span>
+        <span class="skill-chip">ML observability</span>
+      </div>
+    </div>
+
+    <div class="skill-card">
+      <h3 class="mono skill-cat">Infrastructure &amp; Systems</h3>
+      <div class="skill-chips">
+        <span class="skill-chip">DC build program execution</span>
+        <span class="skill-chip">Multi-DC architecture</span>
+        <span class="skill-chip">Bare-metal &amp; on-prem infrastructure</span>
+        <span class="skill-chip">Optical networking (DWDM, G.8032)</span>
+        <span class="skill-chip">BFD + BGP / traffic engineering</span>
+        <span class="skill-chip">L4/L7 load balancing</span>
+        <span class="skill-chip">Kubernetes / Helm / Terraform / GitOps</span>
+        <span class="skill-chip">Prometheus / Grafana / Kubecost</span>
+      </div>
+    </div>
+
+    <div class="skill-card">
+      <h3 class="mono skill-cat">Program Delivery</h3>
+      <div class="skill-chips">
+        <span class="skill-chip">Portfolio management</span>
+        <span class="skill-chip">Technical Architecture Review</span>
+        <span class="skill-chip">Quarterly strategic review</span>
+        <span class="skill-chip">Cross-org dependency management</span>
+        <span class="skill-chip">Agile / hybrid delivery</span>
+        <span class="skill-chip">Wave-based migration planning</span>
+        <span class="skill-chip">RAID / risk management</span>
+        <span class="skill-chip">Operating model design</span>
+        <span class="skill-chip">Hardware procurement &amp; vendor management</span>
+        <span class="skill-chip">Facilitation</span>
+        <span class="skill-chip">Consensus building</span>
+        <span class="skill-chip">Strategic execution</span>
+      </div>
+    </div>
+
+    <div class="skill-card">
+      <h3 class="mono skill-cat">Compliance &amp; Data</h3>
+      <div class="skill-chips">
+        <span class="skill-chip">PCI DSS 4.0.1</span>
+        <span class="skill-chip">QSA audit management</span>
+        <span class="skill-chip">Zero-downtime migration</span>
+        <span class="skill-chip">Data integrity validation</span>
+        <span class="skill-chip">Compliance evidence governance</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- TAB 7: PROJECTS -->
+<div id="projects" class="tab-content">
+  <h2 class="section-title">I build to stay close to the systems my programs run on</h2>
+  <div class="section-subtitle">Each project starts with a real operational problem, named constraints, and artifacts that belong in a program tracker.</div>
+
+  <div class="grid-2" style="margin-bottom: 40px;">
+    <div class="card">
+      <h3 class="mono" style="font-size: 20px; color: var(--accent); margin-bottom: 8px;">GPU fleet reliability classifier</h3>
+      <div style="margin-bottom: 16px;">
+        <span class="tag">Python</span><span class="tag">Slurm</span><span class="tag">Prometheus</span><span class="tag">Grafana</span>
+      </div>
+      <p style="margin-bottom: 16px;">Slurm job failure classifier for a GPU cluster. Catches node-level faults (dead GPUs, driver failures, thermal throttling) before they cascade into downstream job failures. Stops scheduling to affected nodes. Outputs P1-to-P4 SLA-tiered alerts, runbooks per failure class, and cost-attributed reports per node.</p>
+      <p style="margin-bottom: 16px;"><strong>Why it matters:</strong> A dead node that keeps accepting jobs burns cluster hours and delays training runs. The right intervention is at the scheduler, not the postmortem. Same framing a fleet ops team uses to make decommission decisions.</p>
+      <p style="color: var(--text-muted); font-size: 14px; margin-bottom: 16px;"><strong style="color:var(--text-main)">Stack:</strong> Python, Slurm, Prometheus, Grafana · NVIDIA NCA-AIIO certification in progress</p>
+      <a href="https://github.com/aisulu-t" target="_blank" class="impact-link" style="font-size: 14px;">Code →</a>
+    </div>
+
+    <div class="card">
+      <h3 class="mono" style="font-size: 20px; color: var(--accent); margin-bottom: 8px;">DSPy Prompt Optimizer</h3>
+      <div style="margin-bottom: 16px;">
+        <span class="tag">Python</span><span class="tag">Streamlit</span><span class="tag">DSPy</span><span class="tag">LLM Eval</span>
+      </div>
+      <p style="margin-bottom: 16px;">Interactive tool for structured LLM prompt optimization. Engineers routinely cargo-cult DSPy settings without understanding what GEPA/BayesOpt is actually optimizing or why the labeled dataset size matters. Built a 5-step walkthrough that enforces data minimums, parses plain English into typed Signatures, runs optimization with live progress, and shows before/after metric comparison.</p>
+      <p style="margin-bottom: 16px;"><strong>Design constraint:</strong> GEPA requires a minimum labeled dataset before optimization produces meaningful results. Running without that gate produces confidently wrong output, the same failure class as building migration resolvers before completing the identity map. The gate is not optional; it's surfaced at step 2, not buried in docs.</p>
+      <p style="color: var(--text-muted); font-size: 14px; margin-bottom: 16px;"><strong style="color:var(--text-main)">TPM framing:</strong> Mirrors wave-based migration planning. Each phase has a defined entry condition, a transformation, and an exit criterion. Same gate-and-validate structure, different domain.</p>
+      <a href="#" class="impact-link" style="font-size: 14px;">Demo →</a>
+    </div>
+  </div>
+
+  <div class="section-divider">
+    <span class="mono section-divider-label">Also built</span>
+  </div>
+
+  <div class="grid-2" style="margin-bottom: 48px;">
+    <div class="card">
+      <h3 class="mono" style="font-size: 17px; color: var(--accent); margin-bottom: 8px;">Safe AI Tutor for Kids 3–8</h3>
+      <div style="margin-bottom: 14px;">
+        <span class="tag">Agentic AI</span><span class="tag">2B-Param On-Device</span><span class="tag">Vector DB</span><span class="tag">Content Governance</span>
+      </div>
+      <p style="font-size: 14px; margin-bottom: 12px;">General-purpose LLMs lack developmental scaffolding and safe routing for sensitive disclosures. Built a 2B-parameter on-device model with three hard constraints: a safety constitution (100% harmful-content interception in evaluation), a developmental scaffolding matrix limiting vocabulary by age, and a pre-vetted knowledge base that eliminates hallucination at the cost of topical flexibility.</p>
+      <p style="font-size: 14px; margin-bottom: 12px; color: var(--text-muted);"><strong style="color:var(--text-main)">Tradeoffs:</strong> Hard-coded safety constitution sacrifices adaptability for predictability. No persistent cross-session memory prioritizes privacy over personalization.</p>
+      <p style="font-size: 14px; color: var(--text-muted);"><strong style="color:var(--text-main)">TPM artifact:</strong> Safety constitution used as deterministic QA acceptance criteria. Curriculum matrix drafted as the functional spec.</p>
+    </div>
+
+    <div class="card">
+      <h3 class="mono" style="font-size: 17px; color: var(--accent); margin-bottom: 8px;">Dependency Risk Classifier</h3>
+      <div style="margin-bottom: 14px;">
+        <span class="tag">Claude API</span><span class="tag">Web App</span><span class="tag">Netlify</span>
+      </div>
+      <p style="font-size: 14px; margin-bottom: 12px;">Tracking dependencies across complex program graphs is manual and error-prone. A tool that ingests freeform dependency descriptions and automatically classifies them as CONFIRMED, ASSUMED, or AT-RISK, then exports directly into RAID-log format.</p>
+      <p style="font-size: 14px; color: var(--text-muted);"><strong style="color:var(--text-main)">TPM framing:</strong> Encodes a senior infra TPM's three-tier dependency mental model directly into automated software. Removes the gap between how TPMs think about risk and how it gets tracked.</p>
+    </div>
+  </div>
+
+
+</div>
+
+<!-- TAB 2: ABOUT -->
+<div id="about" class="tab-content">
+  <h2 class="section-title">About</h2>
+
+  <div class="about-block" style="max-width: 680px; margin-bottom: 40px;">
+    <p style="font-size: 17px; line-height: 1.7; margin-bottom: 16px;">My first job was in sales. I noticed the enrollment process was broken, told the CEO, and ran the fix. I've been doing that ever since. Built the TPM function from scratch, which meant owning whatever the company needed: networking, compliance, migrations, cost governance. Often at once.</p>
+    <p style="font-size: 17px; line-height: 1.7;">What I'm good at: finding the unlabeled problem that costs money, getting deep enough to act on it, and not becoming the engineer in the process.</p>
+  </div>
+
+  <div class="grid-2">
+    <div>
+      <div class="about-block">
+        <h3 class="mono about-heading">Currently</h3>
+        <p>Consulting as TPM at Algebras AI since May 2026. In parallel, building depth in GPU and AI infrastructure: a GPU fleet failure classifier (Python, Slurm, Prometheus), and a prompt optimization tool for ML engineers (Streamlit, DSPy). Both linked in Projects.</p>
+      </div>
+    </div>
+
+    <div>
+      <div class="about-block">
+        <h3 class="mono about-heading">Recognition</h3>
+        <p>During the COVID-19 response in Astana, organized delivery of 4,500+ hot meals to frontline medical workers across multiple hospitals during lockdown, from idea to execution in 72 hours. Received a formal letter of gratitude from the Minister of Health of Kazakhstan.</p>
+        <p style="margin-top: 12px; font-size: 14px; color: var(--text-muted);">
+          Coverage:
+          <a href="https://forbes.kz/articles/blagotvoritelnost-2020_kak_predprinimateli_pomogali_kazahstanu_v_kovidnom_godu" target="_blank" class="impact-link">Forbes Kazakhstan</a> ·
+          <a href="https://www.caravan.kz/news/im-nekogda-pokushat-638881/" target="_blank" class="impact-link">Caravan</a> ·
+          <a href="https://newtimes.kz/mneniya/109343-dvukh-zaitsev-razom-astanchanki-razvoziat-obedy-vracham-i-zaodno-pomogaiut-malomu-biznesu" target="_blank" class="impact-link">New Times</a> ·
+          <a href="https://ru.sputnik.kz/20201214/ministr-zdravookhraneniya-nagradil-volonterov-za-pomosch-v-borbe-s-koronavirusom-15738081.html" target="_blank" class="impact-link">Sputnik</a> ·
+          <a href="https://newtimes.kz/eksklyuziv/121706-ne-dimash-i-ne-golovkin-liudi-goda-v-novoi-pandemichnoi-realnosti-kazakhstana" target="_blank" class="impact-link">New Times People of Year</a> ·
+          <a href="https://www.gov.kz/memleket/entities/dsm/press/news/details/135909?lang=ru" target="_blank" class="impact-link">Ministry of Health</a> ·
+          <a href="http://alumni-nugsb.org/obedymedikam" target="_blank" class="impact-link">Charity concert</a> ·
+          <a href="https://www.facebook.com/fnn.kz/videos/%D0%B0%D0%B9%D1%81%D1%83%D0%BB%D1%83-%D1%82%D1%83%D1%81%D1%82%D1%8B%D0%BA%D0%B1%D0%B0%D0%B5%D0%B2%D0%B0-%D0%B8%D0%BD%D0%B8%D1%86%D0%B8%D0%B0%D1%82%D0%BE%D1%80-%D0%B8-%D0%B0%D0%BA%D1%82%D0%B8%D0%B2%D0%BD%D1%8B%D0%B9-%D1%83%D1%87%D0%B0%D1%81%D1%82%D0%BD%D0%B8%D0%BA-%D0%BF%D1%80%D0%BE%D0%B5%D0%BA%D1%82%D0%B0-%D0%BE%D0%B1%D0%B5%D0%B4%D1%8B-%D0%BC%D0%B5%D0%B4%D0%B8%D0%BA%D0%B0%D0%BC/161133138817050/?_rdr" target="_blank" class="impact-link">Nazarbayev Foundation video</a>
+        </p>
+      </div>
+
+      <div class="about-block">
+        <h3 class="mono about-heading">Credentials</h3>
+        <div class="credential-list">
+          <div class="credential-item"><span class="mono">M.Sc. Computer Science</span></div>
+          <div class="credential-item"><span class="mono">PMP Certified</span></div>
+          <div class="credential-item"><span class="mono">NVIDIA NCA-AIIO (in progress)</span></div>
+          <div class="credential-item">
+            <span class="mono">8+ years of experience</span>
+            <p style="margin-top: 6px; color: var(--text-muted); font-size: 14px;">San Francisco, CA · Green Card holder</p>
+          </div>
+        </div>
+      </div>
+
+      <div style="margin-top: 8px;">
+        <a href="mailto:aisulu.tustykbayeva@gmail.com" class="impact-link">aisulu.tustykbayeva@gmail.com</a>
+        &nbsp;·&nbsp;
+        <a href="https://linkedin.com/in/aisulu-t" target="_blank" class="impact-link">linkedin.com/in/aisulu-t</a>
+        &nbsp;·&nbsp;
+        <a href="https://drive.google.com/drive/folders/1Btj2QfFbDbI20stL4iuCZfSHR9kA3BPJ?usp=sharing" target="_blank" class="impact-link">Resume (PDF)</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-divider" style="margin-top: 48px;">
+    <span class="mono section-divider-label">Beyond the program</span>
+  </div>
+
+  <div class="grid-2">
+    <div style="border: 1px solid var(--border); border-radius: 8px; padding: 28px; background: var(--bg-card); backdrop-filter: blur(16px);">
+      <h3 class="mono about-heading">Scientific research funding</h3>
+      <p>Funded peer-reviewed air quality research in Almaty in 2021. Findings published in <em>Atmosphere</em> (MDPI): <a href="https://www.mdpi.com/2073-4433/12/12/1592" target="_blank" class="impact-link">Seasonal and Spatial Variation of Volatile Organic Compounds in Ambient Air of Almaty City, Kazakhstan</a>.</p>
+    </div>
+
+    <div style="border: 1px solid var(--border); border-radius: 8px; padding: 28px; background: var(--bg-card); backdrop-filter: blur(16px);">
+      <h3 class="mono about-heading">Early entrepreneurship</h3>
+      <p>Founded <a href="https://www.instagram.com/anti.smog/?hl=en" target="_blank" class="impact-link">Anti.Smog</a> in 2019: air pollution masks tied to a research fundraising campaign. Created the <a href="https://www.instagram.com/heiwa.kz/" target="_blank" class="impact-link">first Kazakhstani brand of weighted blankets</a> in 2021.</p>
+      <p style="margin-top: 12px; font-size: 14px; color: var(--text-muted);">
+        Coverage:
+        <a href="https://astanatimes.com/2019/12/anti-smog-air-pollution-mask-company-founders-fund-air-quality-research-raise-awareness/" target="_blank" class="impact-link">The Astana Times</a> ·
+        <a href="https://www.the-village-kz.com/village/service-shopping/to-buy-or-not/8429-anti-smog" target="_blank" class="impact-link">The Village Kazakhstan</a> ·
+        <a href="https://newtimes.kz/obshchestvo/103554-kak-spastis-ot-smoga-zhitelyam-almaty-i-nur-sultane-foto" target="_blank" class="impact-link">New Times</a>
+      </p>
+    </div>
+  </div>
+
+  <div class="validation-section">
+    <h3 class="mono" style="font-size: 20px; color: var(--accent); margin-bottom: 24px;">Testimonials</h3>
+    <div class="grid-2">
+      <blockquote class="validation-quote">
+        <strong>Nikita Krasulin · CEO, PS Cloud Services</strong>
+        "The system that Aisulu implemented reduced escalations by 3x."
+      </blockquote>
+      <blockquote class="validation-quote">
+        <strong>Miras Sagnayev · CEO, MyChina</strong>
+        "Aisulu is a true professional, she helped us get the company to a new level by building operational systems we didn't know we needed."
+      </blockquote>
+      <blockquote class="validation-quote">
+        <strong>Marina Yambayeva · Head of Product, PS Cloud Services</strong>
+        "Aisulu's technical acumen has always helped us get on the same page with Engineering and ship faster."
+      </blockquote>
+      <blockquote class="validation-quote">
+        <strong>Diana Safina · CBO, Algebras AI</strong>
+        "I see a lot of progress in the way we run things since Aisulu has started, I'm impressed."
+      </blockquote>
+    </div>
+  </div>
+
+</div>
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-bottom" style="border-top: none; padding-top: 0;">
+      <p>M.Sc. Computer Science &middot; PMP &middot; NVIDIA NCA-AIIO (in progress)</p>
+      <p>San Francisco, CA &middot; Green Card holder</p>
+      <p style="margin-top: 20px;">
+        <a href="mailto:aisulu.tustykbayeva@gmail.com" class="footer-link">Email</a> &middot;
+        <a href="https://linkedin.com/in/aisulu-t" target="_blank" class="footer-link">LinkedIn</a> &middot;
+        <a href="https://drive.google.com/drive/folders/1Btj2QfFbDbI20stL4iuCZfSHR9kA3BPJ?usp=sharing" target="_blank" class="footer-link">Resume (PDF)</a>
+      </p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  function openTab(tabId) {
+    document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
+    
+    document.getElementById(tabId).classList.add('active');
+    event.currentTarget.classList.add('active');
+    
+    const tabWrapper = document.querySelector('.tab-wrapper');
+    if (window.scrollY > tabWrapper.offsetTop) {
+      window.scrollTo({ top: tabWrapper.offsetTop, behavior: 'smooth' });
+    }
+  }
+
+  function toggleAccordion(element) {
+    const parent = element.parentElement;
+    const wasOpen = parent.classList.contains('open');
+    
+    document.querySelectorAll('.accordion').forEach(acc => acc.classList.remove('open'));
+    
+    if (!wasOpen) {
+      parent.classList.add('open');
+    }
+  }
+</script>
+
+</body>
+</html>
