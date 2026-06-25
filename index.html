@@ -799,8 +799,40 @@
     .site-footer { padding: 60px 30px; }
     .record-big-grid { grid-template-columns: 1fr; }
     .donut-grid { grid-template-columns: 1fr; gap: 48px; }
-    .programs-table { font-size: 13px; }
     .record-num { font-size: 40px; }
+    .programs-table-wrap { border-radius: 0; border-left: none; border-right: none; }
+    .programs-table, .programs-table tbody, .programs-table tr, .programs-table td { display: block; }
+    .programs-table thead { display: none; }
+    .programs-table { min-width: 0; }
+    .programs-table tbody tr {
+      border: 1px solid rgba(22,47,66,0.15);
+      border-radius: 8px;
+      margin: 12px 16px;
+      background: rgba(255,255,255,0.7);
+      overflow: hidden;
+    }
+    .programs-table td {
+      padding: 10px 14px;
+      border-bottom: 1px solid rgba(22,47,66,0.06);
+      font-size: 13px;
+    }
+    .programs-table tbody tr:last-child td:last-child { border-bottom: none; }
+    .programs-table td::before {
+      display: block;
+      font-family: 'Fira Mono', monospace;
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      font-weight: 700;
+      color: var(--accent);
+      opacity: 0.7;
+      margin-bottom: 3px;
+    }
+    .programs-table td:nth-child(1)::before { content: 'Program'; }
+    .programs-table td:nth-child(2)::before { content: 'Outcome'; }
+    .programs-table td:nth-child(3)::before { content: 'Hard constraint'; }
+    .programs-table td:nth-child(4)::before { content: 'Teams spanned'; }
+    .programs-table td:nth-child(5)::before { content: 'Skills applied'; }
   }
   .hero-proof {
     font-family: 'Fira Mono', monospace;
